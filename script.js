@@ -29,12 +29,23 @@ if(currentTime>=0 && currentTime <9) {
 }
 console.log("Current hour is", currentTime);
 
-// 
-var event9 = $(".event9");
-
-$("#button9").on("click", function() {
-    localStorage.setItem("event9", event9);
+// Save text event to local storage when save button is clicked
+$(".saveBtn").on("click", function(event) {
+    var id = event.target.id.substring(7)
+    var value = $('#event-'+id).val();
+    localStorage.setItem(id, value);
 })
+
+//loading of tasks from localstorage into html
+//1. loop from 9 - 17
+for(i=9; i<18; i++) {
+//convert the number to a string
+//get the value out of local storage
+var storedValue = localStorage.getItem(i)
+//add the value to the element with id event-{whatever id you're on}
+$("#event-"+i).html(storedValue)
+}
+
 
 
       
