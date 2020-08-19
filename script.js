@@ -5,20 +5,37 @@ const currentDate = moment().format("MMM Do");
 $("#currentDay").text(currentDay + ", " + currentDate);
 
 // Set hour color background 
-const currentTime = moment().format('h');
-const workDayHours = [9,10,11,12,1,2,3,4,5];
-const currentTimeIndex = workDayHours.indexOf(currentTime);
+const currentTime = parseInt(moment().format('H'));
 
-$("#" + currentTime).addClass("present");
+var workDayHours = [9,10,11,12,13,14,15,16,17];
+var currentTimeIndex = workDayHours.indexOf(currentTime);
 
-for(i=currentTimeIndex-1; i>=0; i--) {
-    $("#"+ workDayHours[i]).addClass("past");
-}
-
-for(i=currentTimeIndex+1; i<=workDayHours.length; i++) {
+if(currentTime>=0 && currentTime <9) {
+    for(i=0; i>workDayHours.length; i++) {
     $("#"+ workDayHours[i]).addClass("future");
 }
-
+} else if(currentTime>=9 && currentTime <18) {
+    $("#" + currentTime).addClass("present");
+    for(i=currentTimeIndex-1; i>=0; i--) {
+    $("#"+ workDayHours[i]).addClass("past");
+    }
+    for(j=currentTimeIndex+1; j<=workDayHours.length; j++) {
+    $("#"+ workDayHours[j]).addClass("future");
+}
+} else {
+    for(i=0; i<workDayHours.length; i++) {
+        $("#"+ workDayHours[i]).addClass("past");
+}
+}
 console.log("Current hour is", currentTime);
+
+// 
+var event9 = $(".event9");
+
+$("#button9").on("click", function() {
+    localStorage.setItem("event9", event9);
+})
+
+
       
    
