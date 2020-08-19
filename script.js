@@ -14,7 +14,7 @@ if(currentTime>=0 && currentTime <9) {
     for(i=0; i>workDayHours.length; i++) {
     $("#"+ workDayHours[i]).addClass("future");
 }
-} else if(currentTime>=9 && currentTime <18) {
+}else if(currentTime>=9 && currentTime <18) {
     $("#" + currentTime).addClass("present");
     for(i=currentTimeIndex-1; i>=0; i--) {
     $("#"+ workDayHours[i]).addClass("past");
@@ -22,12 +22,11 @@ if(currentTime>=0 && currentTime <9) {
     for(j=currentTimeIndex+1; j<=workDayHours.length; j++) {
     $("#"+ workDayHours[j]).addClass("future");
 }
-} else {
+}else {
     for(i=0; i<workDayHours.length; i++) {
         $("#"+ workDayHours[i]).addClass("past");
 }
 }
-console.log("Current hour is", currentTime);
 
 // Save text event to local storage when save button is clicked
 $(".saveBtn").on("click", function(event) {
@@ -36,14 +35,10 @@ $(".saveBtn").on("click", function(event) {
     localStorage.setItem(id, value);
 })
 
-//loading of tasks from localstorage into html
-//1. loop from 9 - 17
+// loading of tasks from localstorage into html
 for(i=9; i<18; i++) {
-//convert the number to a string
-//get the value out of local storage
-var storedValue = localStorage.getItem(i)
-//add the value to the element with id event-{whatever id you're on}
-$("#event-"+i).html(storedValue)
+    var storedValue = localStorage.getItem(i)
+    $("#event-"+i).html(storedValue)
 }
 
 

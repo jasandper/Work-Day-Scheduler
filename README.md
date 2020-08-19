@@ -8,5 +8,9 @@ Each hour block background color changes based on current time.  If the hour blo
 Each hour block has a text area such that when text is entered by the user, that text is saved to local storage when the save button for that hour block is clicked.  When the page is rerefreshed the text reamins. 
 
 # Link to application 
+https://jasandper.github.io/Work-Day-Scheduler/
 
 # Screenshots 
+![Completed project screenshot](screenshot1.png)
+
+
