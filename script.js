@@ -5,13 +5,15 @@ const currentDate = moment().format("MMM Do");
 $("#currentDay").text(currentDay + ", " + currentDate);
 
 // Set hour color background 
-const currentTime = parseInt(moment().format('H'));
+const currentTime = moment().hours()
+// parseInt(moment().format('H'));
 
 var workDayHours = [9,10,11,12,13,14,15,16,17];
 var currentTimeIndex = workDayHours.indexOf(currentTime);
+console.log(currentTime);
 
 if(currentTime>=0 && currentTime <9) {
-    for(i=0; i>workDayHours.length; i++) {
+    for(i=0; i<workDayHours.length; i++) {
     $("#"+ workDayHours[i]).addClass("future");
 }
 }else if(currentTime>=9 && currentTime <18) {
@@ -35,7 +37,7 @@ $(".saveBtn").on("click", function(event) {
     localStorage.setItem(id, value);
 })
 
-// loading of tasks from localstorage into html
+// loading of events from localstorage into html
 for(i=9; i<18; i++) {
     var storedValue = localStorage.getItem(i)
     $("#event-"+i).html(storedValue)
